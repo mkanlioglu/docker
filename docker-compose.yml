@@ -58,7 +58,7 @@ services:
         platform: linux/x86_64
         image: mysql:5.7
         ports:
-          - "3307:3306"
+          - "3306:3306"
         depends_on:
           - php8
           - php7
@@ -67,4 +67,13 @@ services:
           MYSQL_USER: ${MYSQL_USER}
           MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
-
+  postgres:
+      image: postgres:14-alpine
+      ports:
+        - 5432:5432
+      volumes:
+        - ~/apps/postgres:/var/lib/postgresql/data
+      environment:
+        - POSTGRES_PASSWORD=0000aaaa
+        - POSTGRES_USER=bessaloondbadmin
+        - POSTGRES_DB=bessaloondb
